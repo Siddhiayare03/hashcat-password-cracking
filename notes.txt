@@ -1,0 +1,68 @@
+# Hashcat Notes & Error Explanations
+
+1. Status: Exhausted
+Meaning:
+- All possible password combinations were tried.
+- Password is either not in the wordlist or mask was insufficient.
+
+Fix:
+- Use larger wordlists
+- Use rules
+- Try mask or hybrid attacks
+
+
+
+2. No hashes loaded
+Meaning:
+- Hash format is wrong
+- Wrong hash mode selected
+- Hash already cracked and stored in potfile
+
+Fix:
+- Verify hash type
+- Use correct -m value
+- Run --show to check potfile
+
+
+
+3. Token length exception
+Meaning:
+- Hash length does not match selected hash mode
+
+Fix:
+- Identify hash properly before running
+- Ensure no extra spaces in hash file
+
+
+
+4. Status: Running (long time)
+Meaning:
+- Hashcat is actively trying combinations
+- bcrypt hashes are intentionally slow
+
+Fix:
+- Be patient
+- Use targeted wordlists
+- Stop if ETA is too long
+
+
+
+5. CUDA / OpenCL warning
+Meaning:
+- CUDA SDK not fully installed
+- Hashcat falls back to OpenCL
+
+Impact:
+- Tool still works
+- Slight performance drop
+
+
+
+6. Temperature warning
+Meaning:
+- GPU nearing thermal limit
+
+Fix:
+- Pause session
+- Improve cooling
+- Reduce workload

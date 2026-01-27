@@ -1,0 +1,30 @@
+# Hashcat Commands Used
+
+# 1. Check available devices
+hashcat -I
+
+# 2. MD5 dictionary attack
+hashcat -m 0 -a 0 hash.txt rockyou.txt
+
+# 3. MD5 dictionary + rules
+hashcat -m 0 -a 0 hash.txt rockyou.txt -r rules/best66.rule
+
+# 4. Show cracked hashes (potfile)
+hashcat -m 0 hash.txt --show
+
+# 5. Mask attack (7-character password)
+hashcat -m 0 -a 3 hash.txt ?u?l?l?l?d?d
+
+# 6. bcrypt dictionary + rules
+hashcat -m 3200 -a 0 hash.txt rockyou.txt -r rules/best66.rule
+
+# 7. Resume paused session
+hashcat --restore
+
+# 8. Benchmark system performance
+hashcat -b
+
+# Notes:
+# - -m : hash mode
+# - -a : attack mode
+# - -r : rules
